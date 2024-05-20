@@ -19,25 +19,26 @@ def registerPage(request):
     return render(request, "login/register.html", context)
 
 
-def loginpage(request):
+def homepage(request):
+    return render(request, "login/home.html", {})
 
+
+def loginpage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
             messages.success(request, "Logged in successfully!")
-            return redirect("postlogin.html")
+            return redirect("Home")
         else:
             # Authentication failed, show error message
-            messages.error(
-                request, "Invalid username or password. Please try again.")
+            return render(request, "login/loginerror.html", {})
 
     return render(request, "login/login.html", {})
 
 
 def postlogin(request):
-    return render(request, "login/postlogin.html", {})
+    return render(request, "login/home2.html", {})

@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
-    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/login.css' %}" />
   </head>
   <body>
     <div class="image-container">
@@ -13,7 +13,7 @@
       <img src="{% static 'assets/img/Mask group.png' %}" alt="Login Image" />
       <div class="logo-container">
         <!-- Your logo here -->
-        <img src="{% static 'assets/img/logoimage.png' %}" alt="Logo" />
+        <a href="{% url 'Home' %}"><img src="{% static 'assets/img/Group 46.png' %}" alt="Logo" /></a>
       </div>
       <div class="main-image-container">
         <img src="{% static 'assets/img/heartbg.png' %}" alt="main image" />
@@ -21,7 +21,6 @@
       <div class="login-container">
         <h2>Login</h2>
         <div class="form-container">
-          <form method="post" action="{% url 'login' %}">
           <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
             <div class="form-group">

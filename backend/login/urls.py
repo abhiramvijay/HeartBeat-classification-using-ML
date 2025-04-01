@@ -8,4 +8,5 @@ urlpatterns = [
     path('login', views.loginpage, name='login'),
     path('loginerror', views.loginpage, name='loginerror'),
     path('postlogin', views.postlogin, name='postlogin'),
+    path('predict', views.predict_arrhythmia, name='predict'),
 ]

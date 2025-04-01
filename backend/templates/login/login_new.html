@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #1a1a1a;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .medical-signals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .heartbeat-svg, .eeg-svg {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+        }
+
+        .eeg-svg {
+            top: 0;
+        }
+
+        .heartbeat-svg {
+            bottom: 0;
+        }
+
+        .heartbeat-line {
+            stroke: #ff4444;
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 2000;
+            animation: dash 3s linear infinite;
+            filter: drop-shadow(0 0 2px rgba(255, 68, 68, 0.7));
+        }
+
+        .eeg-line {
+            stroke: #4ecdc4;
+            stroke-width: 1.5;
+            fill: none;
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 2000;
+            animation: dashEeg 4s linear infinite;
+            filter: drop-shadow(0 0 2px rgba(78, 205, 196, 0.7));
+        }
+
+        @keyframes dash {
+            from {
+                stroke-dashoffset: 2000;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes dashEeg {
+            from {
+                stroke-dashoffset: 2000;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 107, 107, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 107, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e1e1;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff6b6b;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ff6b6b, #ff4444);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .forgot-password a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password a:hover {
+            color: #ff6b6b;
+        }
+
+        .heart-icon {
+            color: #ff6b6b;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(238, 238, 238, 0.5);
+        }
+
+        .register-link a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .register-link a:hover {
+            color: #ff4444;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="medical-signals">
+        <div class="grid"></div>
+        <!-- EEG Brain Wave Pattern -->
+        <svg class="eeg-svg" viewBox="0 0 1000 200">
+            <path class="eeg-line" d="
+                M0,100 
+                C 20,100 40,95 50,90
+                S 70,80 80,85 
+                S 100,95 110,100
+                S 130,105 140,102
+                S 160,98 170,100
+                
+                C 190,100 210,110 220,115
+                S 240,120 250,118
+                S 270,112 280,110
+                S 300,105 310,100
+                
+                C 330,95 350,85 360,80
+                S 380,70 390,75
+                S 410,85 420,90
+                S 440,100 450,102
+                
+                C 470,105 490,110 500,108
+                S 520,102 530,100
+                S 550,98 560,100
+                
+                C 580,102 600,105 610,103
+                S 630,98 640,100
+                S 660,105 670,103
+                
+                L 1000,100
+            "/>
+        </svg>
+        <!-- Heart ECG Pattern -->
+        <svg class="heartbeat-svg" viewBox="0 0 1000 200">
+            <path class="heartbeat-line" d="
+                M 0,100 
+                L 50,100 
+                C 60,100 65,100 70,100 
+                Q 75,100 76,95 
+                T 80,90 
+                T 84,100 
+                L 90,100 
+                L 95,100 
+                L 97,100 
+                L 100,100 
+                L 103,100 
+                L 105,100 
+                L 110,100 
+                L 115,140 
+                L 120,20 
+                L 123,100 
+                L 125,100 
+                L 130,100 
+                Q 135,100 140,102 
+                T 150,100 
+                L 160,100 
+                L 170,100
+
+                M 170,100 
+                L 220,100 
+                C 230,100 235,100 240,100 
+                Q 245,100 246,95 
+                T 250,90 
+                T 254,100 
+                L 260,100 
+                L 265,100 
+                L 267,100 
+                L 270,100 
+                L 273,100 
+                L 275,100 
+                L 280,100 
+                L 285,140 
+                L 290,20 
+                L 293,100 
+                L 295,100 
+                L 300,100 
+                Q 305,100 310,102 
+                T 320,100 
+                L 330,100 
+                L 340,100
+
+                M 340,100 
+                L 390,100 
+                C 400,100 405,100 410,100 
+                Q 415,100 416,95 
+                T 420,90 
+                T 424,100 
+                L 430,100 
+                L 435,100 
+                L 437,100 
+                L 440,100 
+                L 443,100 
+                L 445,100 
+                L 450,100 
+                L 455,140 
+                L 460,20 
+                L 463,100 
+                L 465,100 
+                L 470,100 
+                Q 475,100 480,102 
+                T 490,100 
+                L 500,100 
+                L 1000,100
+            "/>
+        </svg>
+    </div>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="heart-icon">❤️</div>
+            <h1>Welcome Back</h1>
+            <p>Login to access Heart Disease Prediction</p>
+        </div>
+        <form id="loginForm" method="POST" action="">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+    </div>
+
+    <script>
+        // Add dynamic animations for both ECG and EEG
+        function createMedicalSignals() {
+            const eegPath = document.querySelector('.eeg-line');
+            const ecgPath = document.querySelector('.heartbeat-line');
+            
+            // Animate EEG with smoother motion
+            eegPath.animate([
+                { strokeDashoffset: '2000' },
+                { strokeDashoffset: '0' }
+            ], {
+                duration: 4000,
+                iterations: Infinity,
+                easing: 'ease-in-out'
+            });
+
+            // Animate ECG with more precise timing
+            ecgPath.animate([
+                { strokeDashoffset: '2000' },
+                { strokeDashoffset: '0' }
+            ], {
+                duration: 3000,
+                iterations: Infinity,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', createMedicalSignals);
+    </script>
+</body>
+</html>

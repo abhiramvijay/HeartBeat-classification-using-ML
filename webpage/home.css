@@ -1,0 +1,242 @@
+html{
+    scroll-behavior: smooth;
+}
+body {
+    height: 100%;
+    width: 100%;
+    background-image: url("../img/background.png");
+    background-color:black;
+    background-size: cover;
+    font-family: "Inter", sans-serif;
+    color: white;
+    margin: 0;
+}
+h2 {
+    margin-top: 80px;
+    margin-left: 100px;
+}
+.class1 {
+    color: white;
+    padding:10px;
+    margin-left:50px;
+    margin-top: 10px;
+    flex-direction: column;
+    
+}
+.navbar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    align-content: center;
+    justify-content: center;
+    padding-left: 40px;
+    margin-left: 70px;
+}
+.navbar a{
+    color: white;
+    text-decoration: none;
+    padding: 30px;
+    display: block;
+    text-align:right;
+    font-family: "Inter", sans-serif;
+}
+.navbar li{
+    float: left;
+    align-items: center;
+}
+.img1 {
+    height: 100px;
+    width: 150px;
+}
+.class2 {
+    flex-direction: row;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    
+}
+.img2 {
+    height: 500px;
+    width: 500px;
+    display: block;
+}
+.class3 {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.class4 {
+    display: block;
+    width: 25%;
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+}
+.info {
+    font-size: smaller;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+}
+.step {
+    font-family: "Outfit", sans-serif;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+/* .team ul {
+    overflow: hidden;
+    list-style-type: none;
+}
+.team a{
+    text-decoration: none;
+
+}
+.team li {
+    float: left;
+    padding: 50px;
+    text-align: center;
+} */
+.team {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+.arrow {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.meet {
+    font-family: "Outfit", sans-serif;
+    font-size: large;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.des {
+    font-family: "Outfit", sans-serif;
+    font-size: medium;
+    text-align: center;
+    margin-bottom: 100px;
+    font-weight: 500;
+}
+.class6 {
+    display: block;
+    width: 25%;
+    flex-direction: column;
+    display: flex;
+    padding: 75px;
+    text-align: center;
+}
+.class7 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.predict {
+    color:white;
+    background-color: #007FA8;
+    width: 40%;
+    height:10%;
+    align-items: center;
+    border-radius: 25px;
+    border-color:  #007FA8;
+    font-weight: bold;
+    outline: none;
+}
+.class8 {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+.class9 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+/* .up {
+    color: white;
+    background-color:#007FA8;
+    height: 56px;
+    width: 107px;
+    border-radius: 5px;
+    font-weight: 200;
+    border-color: #007FA8;
+    outline: none;
+    align-content: center;
+    justify-content: center;
+} */
+.in1 {
+    color: white;
+    background-color:transparent;
+    height: 56px;
+    width: 107px;
+    border-radius: 5px;
+    font-weight: 200;
+    border-color: transparent;
+    outline: none;
+    align-content: center;
+    justify-content: center;
+    margin-left: 100px;
+    border-color: white;
+
+}
+/* .sign {
+    height: 144.88px;
+    width: 79.2px;
+}
+.login{
+    height: 144.88px;
+    width: 79.2px;
+} */
+.list {
+    margin-top: 15px;
+    margin-left: 20px;
+}
+.class5{
+    margin-top: 100px;
+}
+.desp{
+    text-align: center;
+}
+.class10{
+    margin-top: 90px;
+    padding: 30px;
+}
+.beat1{
+    margin-top: 5px;
+    margin-right: 7px;
+}
+.login{
+    margin-left: 100px;
+}
+.class11{
+    display: flex;
+    flex-direction: row;
+    margin-left: 70px;
+}
+.in{
+    color: white;
+    background-color:transparent;
+    height: 56px;
+    width: 107px;
+    border-radius: 5px;
+    font-weight: 200;
+    border-color: transparent;
+    outline: none;
+    align-content: center;
+    justify-content: center;
+    margin-left: 100px;
+}
+.logout {
+    color: white;
+    position: absolute;
+    top: 37px;
+    left: 1173px;
+    font-weight: 500;
+}
